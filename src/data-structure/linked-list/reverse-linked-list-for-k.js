@@ -15,21 +15,16 @@ class LinkedList {
     this.size = 0;
   }
 
-  reverseLLRec(node, k) {
-    let kk = 3;
-    let count = 0;
+  reverseLLRec(node) {
     let curr = null;
     if (!node.next) {
       this.head = node;
       return;
     }
-    while (count < k && curr !== null) {
-      this.reverseLLRec(node.next, kk);
-      curr = node.next;
-      curr.next = node;
-      node.next = null;
-      count++;
-    }
+    this.reverseLLRec(node.next);
+    curr = node.next;
+    curr.next = node;
+    node.next = null;
   }
 
   insertAtLast(data) {
@@ -64,6 +59,6 @@ ll.insertAtLast(4);
 ll.insertAtLast(5);
 console.log("Before reverse:");
 ll.printList();
-ll.reverseLLRec(ll.head, 3);
+ll.reverseLLRec(ll.head);
 console.log("After reverse:");
 ll.printList();
