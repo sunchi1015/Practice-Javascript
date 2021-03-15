@@ -1,23 +1,29 @@
 console.log("Prime Number for given N");
 
 function primeNumberGen(n) {
-  for (let i = 2; i < n; i++) {
+  let arr = [];
+  for (let i = 2; i <= Number.POSITIVE_INFINITY; i++) {
     console.log("prime");
-    const res = isPrime(i);
-    console.log("Prime 2 to N", res);
+    if (isPrime(i)) {
+      arr.push(i);
+    }
+    if (arr.length === n) {
+      break;
+    }
   }
+  console.log(`Prime number from 2 to ${n} --->`, arr.join(","));
 }
 
 function isPrime(n) {
   for (let i = 2; i < n; i++) {
-    if (n % 1 === 0) {
+    if (n % i === 0) {
       return false;
     }
   }
   return true;
 }
 
-primeNumberGen(2);
+primeNumberGen(5);
 
 // new solutions
 // function primeGen(n) {
